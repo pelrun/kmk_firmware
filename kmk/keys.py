@@ -514,7 +514,7 @@ class KeyAttrDict(AttrDict):
         elif key in ('HID_SWITCH', 'HID'):
             make_key(names=('HID_SWITCH', 'HID'), on_press=handlers.hid_switch)
         else:
-            raise ValueError('Invalid key')
+            raise ValueError(f'Invalid key: {key}')
         return self.__getattr__(key)
 
 

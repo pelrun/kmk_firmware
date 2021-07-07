@@ -99,9 +99,9 @@ reset-board:
 	@-timeout -k 5s 10s $(PIPENV) run ampy -p /dev/ttyACM0 -d ${AMPY_DELAY} -b ${AMPY_BAUD} run util/reset.py
 
 ifdef MOUNTPOINT
-$(MOUNTPOINT)/kmk/.copied: $(shell find kmk/ -name "*.py" | xargs -0)
-	@echo "===> Copying KMK source folder"
-	@rsync -rh kmk $(MOUNTPOINT)/
+$(MOUNTPOINT)/kmk/.copied: $(MPY_TARGET_DIR)/.mpy.compiled
+	@echo "===> Copying KMK compiled folder"
+	@rsync -rh .compiled/kmk $(MOUNTPOINT)/
 	@touch $(MOUNTPOINT)/kmk/.copied
 	@sync
 
